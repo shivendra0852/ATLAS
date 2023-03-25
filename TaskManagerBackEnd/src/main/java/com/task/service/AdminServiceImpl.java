@@ -7,17 +7,19 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.task.exception.AdminException;
 import com.task.exception.AuthorizeException;
 import com.task.exception.SprintException;
 import com.task.exception.TaskException;
 import com.task.exception.UserException;
+import com.task.model.Admin;
 import com.task.model.CurrentAdminSession;
 import com.task.model.LoginDTO;
 import com.task.model.Sprint;
 import com.task.model.Task;
 import com.task.model.TaskStatus;
 import com.task.model.User;
-import com.task.model.UserRole;
+import com.task.repository.AdminDao;
 import com.task.repository.AdminSessionDao;
 import com.task.repository.SprintDao;
 import com.task.repository.TaskDao;
@@ -28,6 +30,9 @@ import net.bytebuddy.utility.RandomString;
 
 @Service
 public class AdminServiceImpl implements AdminService{
+	@Autowired
+	private AdminDao adminDao;
+	
 	@Autowired
 	private UserDao userDao;
 	
@@ -41,28 +46,22 @@ public class AdminServiceImpl implements AdminService{
 	private TaskDao taskDao;
 
 	@Override
-	public User registerAdmin(User user) throws UserException {
-		User registeredAdmin = userDao.findByMobileNo(user.getMobileNo());
+	public Admin registerAdmin(Admin admin) throws UserException {
+		Admin registeredAdmin = adminDao.findByMobileNo(admin.getMobileNo());
 		
 		if(registeredAdmin!=null) {
-			throw new UserException("Admin already registered with this number!");
+			throw new AdminException("Admin already registered with this number!");
 		}
 		
-		user.setRole(UserRole.ADMIN);
-		return userDao.save(user);
+		return adminDao.save(admin);
 	}
 
 	@Override
-	public User loginAdmin(LoginDTO dto) throws UserException, AuthorizeException {
-		User existingUser = userDao.findByMobileNo(dto.getMobileNo());
+	public Admin loginAdmin(LoginDTO dto) throws AdminException, AuthorizeException {
+		Admin existingUser = adminDao.findByMobileNo(dto.getMobileNo());
 	    
 	    if(existingUser == null) {
 	        throw new AuthorizeException("Please register your self first!");
-	    }
-	    
-	    UserRole role = existingUser.getRole();
-	    if(role != UserRole.ADMIN) {
-	        throw new AuthorizeException("This login method is only for admins!");
 	    }
 	    
 	    Optional<CurrentAdminSession> validAdmin = adminSessionDao.findById(existingUser.getId());
@@ -88,7 +87,7 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public Sprint createSprint(Sprint sprint, String uId) throws UserException, AuthorizeException {
+	public Sprint createSprint(Sprint sprint, String uId) throws AdminException, AuthorizeException {
 		CurrentAdminSession loggedInAdmin = adminSessionDao.findByUniqueId(uId);
 	    if (loggedInAdmin == null) {
 	        throw new AuthorizeException("User not authorized to create a Sprint");
@@ -97,15 +96,10 @@ public class AdminServiceImpl implements AdminService{
 	    return sprintDao.save(sprint);
 	}
 
-	@Override
-	public Task createTask(Task task, String uId) throws UserException, AuthorizeException {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public Task addTaskToSprint(Integer sprintId, String uId, Task task)
-			throws UserException, SprintException, AuthorizeException {
+			throws AdminException, SprintException, AuthorizeException {
 		CurrentAdminSession loggedInAdmin = adminSessionDao.findByUniqueId(uId);
 		
 		if(loggedInAdmin==null) {
@@ -120,14 +114,14 @@ public class AdminServiceImpl implements AdminService{
 		
 		task.setSprint(sprint.get());
 		
-		task.setCreatedBy(userDao.findById(loggedInAdmin.getId()).get());
+		task.setCreatedBy(adminDao.findById(loggedInAdmin.getId()).get());
 		
 		return taskDao.save(task);
 	}
 
 	@Override
 	public Task changeTaskAssignee(Integer taskId, String uId, Integer userId)
-			throws UserException, TaskException, AuthorizeException {
+			throws AdminException, TaskException, AuthorizeException {
 		
 		Optional<User> user = userDao.findById(userId);
 		
@@ -154,7 +148,7 @@ public class AdminServiceImpl implements AdminService{
 
 	@Override
 	public Task changeTaskStatus(Integer taskId, String uId, TaskStatus status)
-			throws TaskException, UserException, AuthorizeException {
+			throws TaskException, AdminException, AuthorizeException {
 		Optional<Task> task = taskDao.findById(taskId);
 		
 		if(task.isEmpty()) {
@@ -173,7 +167,7 @@ public class AdminServiceImpl implements AdminService{
 
 	@Override
 	public List<Task> getAllTasksInSprint(Integer sprintId, String uId)
-			throws TaskException, UserException, AuthorizeException, SprintException {
+			throws TaskException, AdminException, AuthorizeException, SprintException {
 		Optional<Sprint> sprint = sprintDao.findById(sprintId);
 		
 		if(sprint.isEmpty()) {
@@ -197,7 +191,7 @@ public class AdminServiceImpl implements AdminService{
 
 	@Override
 	public List<Task> getAllTasksAssignedToUser(Integer userId, String uId)
-			throws TaskException, UserException, AuthorizeException {
+			throws TaskException, AdminException, AuthorizeException {
 		CurrentAdminSession loggedInAdmin = adminSessionDao.findByUniqueId(uId);
 		
 		if(loggedInAdmin==null) {
@@ -220,7 +214,7 @@ public class AdminServiceImpl implements AdminService{
 	}
 
 	@Override
-	public String logoutAdmin(String uId) throws AuthorizeException, UserException {
+	public String logoutAdmin(String uId) throws AuthorizeException, AdminException {
 		
 		CurrentAdminSession loggedInAdmin = adminSessionDao.findByUniqueId(uId);
 		

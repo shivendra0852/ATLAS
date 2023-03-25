@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.task.model.Admin;
 import com.task.model.LoginDTO;
 import com.task.model.Sprint;
 import com.task.model.Task;
@@ -21,21 +23,22 @@ import com.task.model.User;
 import com.task.service.AdminService;
 
 @RestController
+@CrossOrigin(origins = "*")
 public class AdminController {
 	
 	@Autowired
 	private AdminService adminService;
 	
 	@PostMapping("/registerAdmin")
-    public ResponseEntity<User> registerAdmin(@RequestBody User user){
-        User newUser = adminService.registerAdmin(user);
-        return new ResponseEntity<User>(newUser,HttpStatus.CREATED);
+    public ResponseEntity<Admin> registerAdmin(@RequestBody Admin admin){
+        Admin newAdmin = adminService.registerAdmin(admin);
+        return new ResponseEntity<Admin>(newAdmin,HttpStatus.CREATED);
     }
 
     @PostMapping("/loginAdmin")
-    public ResponseEntity<User> loginAdmin(@RequestBody LoginDTO dto){
-        User user = adminService.loginAdmin(dto);
-        return new ResponseEntity<User>(user,HttpStatus.OK);
+    public ResponseEntity<Admin> loginAdmin(@RequestBody LoginDTO dto){
+        Admin admin = adminService.loginAdmin(dto);
+        return new ResponseEntity<Admin>(admin,HttpStatus.OK);
     }
 
     @PostMapping("/sprint")

@@ -14,7 +14,6 @@ import com.task.model.CurrentUserSession;
 import com.task.model.LoginDTO;
 import com.task.model.Task;
 import com.task.model.User;
-import com.task.model.UserRole;
 import com.task.repository.TaskDao;
 import com.task.repository.UserDao;
 import com.task.repository.UserSessionDao;
@@ -41,7 +40,6 @@ public class UserServiceImpl implements UserService{
 			throw new UserException("User already registered with this number!");
 		}
 		
-		user.setRole(UserRole.USER);
 		return userDao.save(user);
 	}
 
@@ -53,10 +51,6 @@ public class UserServiceImpl implements UserService{
 	        throw new AuthorizeException("Please register your self first!");
 	    }
 	    
-	    UserRole role = existingUser.getRole();
-	    if(role != UserRole.USER) {
-	        throw new AuthorizeException("This login method is only for user not for admin!");
-	    }
 	    
 	    Optional<CurrentUserSession> validUser = userSessionDao.findById(existingUser.getId());
 	    

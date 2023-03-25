@@ -1,6 +1,5 @@
 package com.task.model;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,25 +21,23 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Sprint {
-    
-    @Id
+public class Admin {
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    @Column(nullable = false)
+    @NotNull
     private String name;
     
-    @Temporal(TemporalType.DATE)
-    @Column(nullable = false)
-    private Date startDate;
+    @NotNull
+//    @Column(unique = true)
+    private String mobileNo;
     
-    @Temporal(TemporalType.DATE)
-    @Column(nullable = false)
-    private Date endDate;
-    
+    @NotNull
+    private String password;
+   
     @JsonIgnore
-    @OneToMany(mappedBy = "sprint", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "createdBy", cascade = CascadeType.ALL)
     private List<Task> tasks = new ArrayList<>();
     
 }

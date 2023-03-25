@@ -1,6 +1,8 @@
 package com.task.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -40,13 +42,17 @@ public class Task {
     @Column(nullable = false)
     private TaskStatus status;
     
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User assignee;
     
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    private User createdBy;
+    @JoinColumn(name = "admin_id")
+    private Admin createdBy;
     
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sprint_id")
     private Sprint sprint;

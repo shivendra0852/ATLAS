@@ -3,6 +3,8 @@ package com.task.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -37,15 +39,8 @@ public class User {
     @NotNull
     private String password;
     
-    @Enumerated(EnumType.STRING)
-    @NotNull
-    private UserRole role;
-    
+    @JsonIgnore
     @OneToMany(mappedBy = "assignee", cascade = CascadeType.ALL)
     private List<Task> tasksOfAssignee = new ArrayList<>();
     
-    
-    @OneToMany(mappedBy = "createdBy", cascade = CascadeType.ALL)
-    private List<Task> tasks = new ArrayList<>();
-
 }
