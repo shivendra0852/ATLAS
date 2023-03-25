@@ -1,5 +1,5 @@
 const submitAdminRegistrationForm = async (event) => {
-    event.preventDefault(); // prevent form submission and page refresh
+    event.preventDefault();
     const adminName = document.getElementById("admin_name").value;
     const adminMobile = document.getElementById("admin_mobile").value;
     const adminPassword = document.getElementById("admin_password").value;
@@ -10,7 +10,6 @@ const submitAdminRegistrationForm = async (event) => {
         return;
     }
 
-
     if (adminPassword !== adminConfirmPassword) {
       alert("Passwords do not match");
       return;
@@ -18,7 +17,7 @@ const submitAdminRegistrationForm = async (event) => {
   
     const data = {
       name: adminName,
-      mobileNo: adminMobile, // added mobileNo field
+      mobileNo: adminMobile,
       password: adminPassword,
     };
   
