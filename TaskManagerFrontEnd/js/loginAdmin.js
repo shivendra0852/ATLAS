@@ -21,12 +21,14 @@ const loginAdmin = async (event) => {
       body: JSON.stringify(data),
     };
   
-    const response = await fetch("http://localhost:8888/loginAdmin", options);
+    const response = await fetch("http://localhost:8808/loginAdmin", options);
     const responseData = await response.json();
+    console.log(responseData);
   
     if (response.ok) {
       alert("Login successful");
-      // redirect to the dashboard page or perform other actions here
+      localStorage.setItem('adminData', JSON.stringify(responseData));
+      window.location.href="adminLandingPage.html";
     } else {
       alert("Login failed");
       // display an error message to the user here

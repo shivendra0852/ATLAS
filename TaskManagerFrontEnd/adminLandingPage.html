@@ -8,9 +8,16 @@
     <link rel="stylesheet" href="css/adminLandingPage.css">
 </head>
 <body>
-    <div id="navbar">
-        <div><img src="media\Atlassian-horizontal-blue-rgb2.png" alt="logo"></div>
+  <div id="navbar">
+    <div><img src="media\Atlassian-horizontal-blue-rgb2.png" alt="logo"></div>
+    <div class="logout">
+        <div><img
+          src="https://cdn-icons-png.flaticon.com/128/747/747376.png"
+          alt="image"
+        />&nbsp;&nbsp;<span></span></div>
+        <button class="logout" onclick="logout()">LOGOUT</button>
     </div>
+</div>
     <div class="container">
         <div class="left">
           <h2 class="heading active" data-tab="tab1">Create a new sprint</h2>
@@ -95,10 +102,23 @@
             </form>
           </div>
           <div class="tab" id="tab5">
-            <h2>Heading 5</h2>
+            <h2>Get tasks of a sprint</h2>
             <form>
-              <textarea name="textbox" id="textbox5"></textarea>
-              <button type="submit" id="submit-btn5">Submit</button>
+                <div class="form-group">
+                  <label for="name">Sprint Id:</label>
+                  <input type="number" id="sprintid5" name="name" required>
+                </div>
+                <button type="submit" id="submit-btn5">Submit</button>
+            </form>
+          </div>
+          <div class="tab" id="tab6">
+            <h2>Get tasks of a user</h2>
+            <form>
+              <div class="form-group">
+                <label for="name">User Id:</label>
+                <input type="number" id="userid6" name="name" required>
+              </div>
+              <button type="submit" id="submit-btn6">Submit</button>
             </form>
           </div>
         </div>

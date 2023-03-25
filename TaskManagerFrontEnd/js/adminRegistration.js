@@ -30,7 +30,7 @@ const submitAdminRegistrationForm = async (event) => {
       body: JSON.stringify(data),
     };
   
-    const response = await fetch("http://localhost:8888/registerAdmin", options);
+    const response = await fetch("http://localhost:8808/registerAdmin", options);
     const responseData = await response.json();
   
     if (response.ok) {
