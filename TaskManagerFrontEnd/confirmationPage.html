@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css\confirmationPage.css">
+</head>
+<body>
+    <div id="container">
+        <div id="navbar">
+            <div><img src="media\Atlassian-horizontal-blue-rgb2.png" alt="logo"></div>
+        </div>
+        <div id="content">
+            <div id="register_login">
+                <div class="admin">
+                  <div>Are you an admin?</div>
+                  <button class="register_admin" onclick="registerAdmin()">Register</button>
+                  <button class="login_admin" onclick="loginAdmin()">Login</button>
+                </div>
+                <div class="border"></div>
+                <div class="user">
+                  <div>Are you a user?</div>
+                  <button class="register_user" onclick="registerUser()">Register</button>
+                  <button class="login_user" onclick="loginUser()">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<script src="js\confirmationPage.js"></script>

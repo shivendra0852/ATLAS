@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/adminLandingPage.css">
+</head>
+<body>
+    <div id="navbar">
+        <div><img src="media\Atlassian-horizontal-blue-rgb2.png" alt="logo"></div>
+    </div>
+    <div class="container">
+        <div class="left">
+          <h2 class="heading active" data-tab="tab1">Create a new sprint</h2>
+          <h2 class="heading" data-tab="tab2">Add task to sprint</h2>
+          <h2 class="heading" data-tab="tab3">Assign task to someone</h2>
+          <h2 class="heading" data-tab="tab4">Change task status</h2>
+          <h2 class="heading" data-tab="tab5">Get tasks of a sprint</h2>
+          <h2 class="heading" data-tab="tab6">Get tasks of a user</h2>
+        </div>
+        <div class="right">
+          <div class="tab active" id="tab1">
+            <h2>Create a new sprint</h2>
+            <form>
+              <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="start-date">Start Date:</label>
+                <input type="date" id="start-date" name="start-date" required>
+              </div>
+              <div class="form-group">
+                <label for="end-date">End Date:</label>
+                <input type="date" id="end-date" name="end-date" required>
+              </div>
+              <button type="submit" id="submit-btn">Submit</button>
+            </form>
+          </div>
+          <div class="tab" id="tab2">
+            <h2>Add task to sprint</h2>
+            <form>
+              <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name2" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="start-date">Description</label>
+                <input type="text" id="desc2" name="start-date" required>
+              </div>
+              <div class="form-group">
+                <label for="end-date">TaskType</label>
+                <input type="text" id="tasktype2" name="end-date" required>
+              </div>
+              <div class="form-group">
+                <label for="end-date">TaskStatus</label>
+                <input type="text" id="taskstatus2" name="end-date" required>
+              </div>
+              <div class="form-group">
+                <label for="end-date">Sprint Id</label>
+                <input type="number" id="sprintid2" name="end-date" required>
+              </div>
+              <button type="submit" id="submit-btn2">Submit</button>
+              <!-- <button type="submit" id="submit-btn2">Submit</button> -->
+            </form>
+          </div>
+          <div class="tab" id="tab3">
+            <h2>Assign task to someone</h2>
+            <form>
+              <div class="form-group">
+                <label for="name">User Id:</label>
+                <input type="number" id="userid3" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="start-date">Task Id:</label>
+                <input type="number" id="taskid3" name="start-date" required>
+              </div>
+              <button type="submit" id="submit-btn3">Submit</button>
+            </form>
+          </div>
+          <div class="tab" id="tab4">
+            <h2>Change the task status</h2>
+            <form>
+              <div class="form-group">
+                <label for="name">Task Id:</label>
+                <input type="number" id="taskid4" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="start-date">Task Staus:</label>
+                <input type="text" id="taskstatus4" name="start-date" required>
+              </div>
+              <button type="submit" id="submit-btn4">Submit</button>
+            </form>
+          </div>
+          <div class="tab" id="tab5">
+            <h2>Heading 5</h2>
+            <form>
+              <textarea name="textbox" id="textbox5"></textarea>
+              <button type="submit" id="submit-btn5">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+</body>
+<script src="js/adminLandingPage.js"></script>
+</html>

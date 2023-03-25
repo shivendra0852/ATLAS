@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Registration Page</title>
+    <link rel="stylesheet" href="css/signUpPage.css" />
+  </head>
+  <body>
+    <div id="navbar">
+      <div><img src="media\Atlassian-horizontal-blue-rgb2.png" alt="logo"></div>
+    </div>
+    <div class="container">
+      <h1>Register as Admin</h1>
+      <form id="admin-registration-form">
+        <label for="admin_name">Name</label>
+        <input type="text" id="admin_name" name="admin_name" required />
+
+        <label for="admin_mobile">Mobile No.</label>
+        <input type="number" id="admin_mobile" name="mobileNo" required />
+
+
+        <label for="admin_password">Password</label>
+        <input type="password" id="admin_password" name="admin_password" required />
+
+        <label for="admin_confirm-password">Confirm Password</label>
+        <input type="password" id="admin_confirm-password" name="admin_confirm-password" required />
+
+        <input type="submit" value="Register" onclick="submitAdminRegistrationForm(event)" />
+
+      </form>
+      <p>Already have an account? <a href="loginPageAdmin.html">Login Here</a></p>
+    </div>
+    <script src="js/adminRegistration.js"></script>
+  </body>
+</html>

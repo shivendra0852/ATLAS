@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+:root{
+    --primary:#0065ff;
+    --dark:#161616;
+    --gray:rgb(85, 85, 85);
+    --light:#FFFFFF;
+    --ternary:#F5F5F5;
+    --linkedin:#0A66C2;
+}
+body{
+    margin: 0px;
+    padding: 0px;
+}
+#navbar{
+    font-family: 'Ubuntu' , sans-serif;
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#navbar>div{
+    width: 25%;
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+}
+#navbar>div>img{
+    width: 150px;
+}
+#navbar .border{
+    width: 0.1px;
+    height: 50px;
+    border-right: 0.5px solid var(--linkedin);
+}
+#navbar>div:first-child{
+    width: 20%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#navbar>div:nth-child(2){
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+#navbar .register{
+        height: 20%;
+        cursor: pointer;
+        color: var(--light);
+        background-color: var(--primary);
+        border: none;
+        border-radius: 6px;
+        padding: 11.5px 20px;
+        font-family: 'Ubuntu' , sans-serif;
+        font-size: 1rem;
+        font-weight: 500;
+}
+#navbar .login{
+      height: 20%;
+      cursor: pointer;
+        color: var(--primary);
+        background-color: transparent;
+        border: 1.5px solid var(--primary);
+        border-radius: 6px;
+        padding: 10px 30px;
+        font-family: 'Ubuntu' , sans-serif;
+        font-size: 1rem;
+        font-weight: 500;
+}
+
+#navbar .register:hover{
+    background-color: var(--linkedin);
+    padding: 12px 20.5px;
+    transition: 0.3s;
+}
+
+#navbar .login:hover{
+    color: var(--linkedin);
+    padding: 10.5px 31px;
+    transition: 0.3s;
+}
+#content{
+    display: flex;
+    height: 100vh;
+    background-image: url("https://wac-cdn.atlassian.com/dam/jcr:78029063-f59c-4c43-9669-6b4b6d4869f8/Team23_WAC_Promotion_Hero_Background.jpg?cdnVersion=882");
+    background-size: 125% 100vh;
+    z-index: -1;
+    background-repeat: no-repeat;
+    justify-content: center;
+    align-items: center;
+}
+#get_started{
+    background-image: linear-gradient(#FFBDAD,#ED50B4);
+    border: transparent;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    font-family: 'Ubuntu' , sans-serif;
+    font-size: 1rem;
+}
+#get_started:hover{
+    background-image: linear-gradient(to bottom, transparent, transparent);
+
+}
+
+#content2{
+    display: flex;
+    height: 100vh;
+    background-image: url("https://wac-cdn.atlassian.com/dam/jcr:78029063-f59c-4c43-9669-6b4b6d4869f8/Team23_WAC_Promotion_Hero_Background.jpg?cdnVersion=882");
+    background-size: 125% 100vh;
+    background-repeat: no-repeat;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+/* register-login */
+#register_login{
+    width: 70%;
+    height: 70vh;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-image: linear-gradient(#FFBDAD, #ED50B4);
+  }
+  
+  #register_login .admin, #register_login .user{
+    width: 40%;
+    height: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  #register_login .border{
+    border-left: 1px solid white;
+    height: 50%;
+    width: 1%;
+  }
+  
+  .login_admin, .login_user{
+    width: 70%;
+    height: 23%;
+    cursor: pointer;
+    color: white;
+    background-color: transparent;
+    border: 1.5px solid white;
+    border-radius: 6px;
+    padding: 10px 13px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  
+  .login_admin:hover, .login_user:hover{
+    width: 72%;
+    height: 24%;
+    background-color: white;
+    color: #ED50B4;
+    transition: 0.3s;
+  }
+  
+  .register_admin, .register_user{
+    width: 70%;
+    height: 23%;
+    cursor: pointer;
+    color: #FFBDAD;
+    background-color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 12px 12px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  
+  .register_admin:hover, .register_user:hover{
+    width: 72%;
+    height: 24%;
+    border: 1.5px solid white;
+    color: white;
+    background-color: transparent;
+    transition: 0.3s;
+  }
+  
